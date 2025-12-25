@@ -5,7 +5,7 @@
 
 class Rectangle: public Forme {
 public:
-	Rectangle(int x=0, int y=0, int l=0, int h=0);
+	Rectangle(int x=0, int y=0, int l=1, int h=1);
 	double aire() override;
 	void afficher(ostream &s) override;
 	void setHauteur(int h);

@@ -20,13 +20,33 @@ class Tests
 {
 public:
 	// Méthodes pour les tests unitaires des classes
-	bool test_peut_créer_rectangle_avec_valeurs();
+	//Tests pour la classe Rectangle
+	bool test_peut_creer_rectangle_avec_valeurs_de_base();
+	bool test_peut_creer_rectangle_avec_valeurs();
 	bool test_rectangle_peut_calculer_aire();
 	bool test_rectangle_peut_modifier_sa_largeur();
 	bool test_rectangle_peut_modifier_sa_hauteur();
 	bool test_rectangle_affiche_correctement_ses_valeurs();
 	bool test_rectangle_peut_changer_ancrage();
 	bool test_rectangle_peut_translater();
+	
+	//Tests pour la classe Carre
+	bool test_peut_creer_carre_avec_valeurs_de_base();
+	bool test_peut_creer_carre_avec_valeurs();
+	bool test_carre_peut_modifier_son_cote();
+	bool test_carre_peut_calculer_son_aire();
+	bool test_carre_peut_afficher_ses_valeurs();
+	bool test_carre_peut_changer_son_ancrage();
+	bool test_carre_peut_translater();
+	
+	//Tests pour la classe Cercle
+	bool test_peut_creer_cercle_avec_valeurs_de_base();
+	bool test_peut_creer_cercle_avec_valeurs();
+	bool test_cercle_peut_modifier_son_rayon();
+	bool test_cercle_peut_calculer_son_aire();
+	bool test_cercle_peut_afficher_ses_valeurs();
+	bool test_cercle_peut_changer_son_ancrage();
+	bool test_cercle_peut_translater();
 	
 	void tests_unitaires_formes();
 	void tests_unitaires_vecteur();
