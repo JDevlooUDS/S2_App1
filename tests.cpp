@@ -9,7 +9,6 @@
 ********/
 
 #include "sstream"
-#include <format>
 #include "tests.h"
 #include "rectangle.h"
 #include "carre.h"
@@ -200,7 +199,9 @@ bool Tests::test_cercle_peut_calculer_son_aire() {
 bool Tests::test_cercle_peut_afficher_ses_valeurs() {
 	Cercle cercle(ANCRAGE_PAR_DEFAUT_X, ANCRAGE_PAR_DEFAUT_Y, RAYON_PAR_DEFAUT);
 	ostringstream oss;
-	string expected = format("Cercle (x=52, y=53, r=10, aire={})\n", 100.0*M_PI); // changer de formatting tool
+	stringstream ss;
+	ss << "Cercle (x=52, y=53, r=10, aire=" << 100.0 *M_PI << ")\n";
+	string expected = ss.str();
 	
 	cercle.afficher(oss);
 	

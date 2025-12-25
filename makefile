@@ -4,7 +4,7 @@ TARGET = graphicus
 
 TARGET_DEL = graphicus
 
-SRCS = canevas.cpp couche.cpp forme.cpp graphicus-01.cpp tests.cpp rectangle.cpp carre.cpp cercle.cpp
+SRCS = canevas.cpp couche.cpp forme.cpp graphicus-01.cpp tests.cpp rectangle.cpp carre.cpp cercle.cpp vecteur.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
