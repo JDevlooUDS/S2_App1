@@ -12,7 +12,12 @@
 #define TESTS_H
 
 #include <iostream>
+#include "sstream"
 #include "canevas.h"
+#include "vecteur.h"
+#include "rectangle.h"
+#include "carre.h"
+#include "cercle.h"
 
 using namespace std;
 
@@ -47,6 +52,25 @@ public:
 	bool test_cercle_peut_afficher_ses_valeurs();
 	bool test_cercle_peut_changer_son_ancrage();
 	bool test_cercle_peut_translater();
+	
+	//Tests pour la classe vecteur
+	bool test_vecteur_retourne_taille_zero_quand_vide();
+	bool test_vecteur_retourne_taille_1_quand_1_element();
+	bool test_vecteur_retourne_taille_X_quand_X_element();
+	bool test_capacite_initial_est_unitaire();
+	bool test_capacite_double_lorsque_trop_plein();
+	bool test_lorsque_vecteur_se_vide_taille_devient_zero();
+	bool test_estVide_retourne_vrai_quand_le_vecteur_est_vide();
+	bool test_estVide_retourne_faux_quand_le_vecteur_nest_pas_vide();
+	bool test_ajouter_au_vecteur_retourne_vrai_lorsque_la_forme_est_ajouter();
+	bool test_retirer_au_vecteur_retourne_pointeur_vers_objet_selon_index_et_retire_objet();
+	bool test_retirer_avec_index_plus_petit_que_zero_retourne_nullptr_et_garde_objet();
+	bool test_retirer_avec_index_plus_grand_que_capacite_retourne_nullptr_et_garde_objet();
+	bool test_obtenir_au_vecteur_retourne_pointeur_vers_objet_selon_index();
+	bool test_obtenir_avec_index_plus_petit_que_zero_retourne_nullptr();
+	bool test_obtenir_avec_index_plus_grand_que_capacite_retourne_nullptr();
+	bool test_afficher_affiche_le_contenu_de_chaque_forme_du_vecteur();
+	
 	
 	void tests_unitaires_formes();
 	void tests_unitaires_vecteur();

@@ -7,12 +7,7 @@
  *
  * Ce fichier fait partie de la distribution de Graphicus.
 ********/
-
-#include "sstream"
 #include "tests.h"
-#include "rectangle.h"
-#include "carre.h"
-#include "cercle.h"
 
 const int ANCRAGE_PAR_DEFAUT_X = 52;
 const int ANCRAGE_PAR_DEFAUT_Y = 53;
@@ -21,6 +16,8 @@ const int HAUTEUR_PAR_DEFAUT = 10;
 const int COTE_PAR_DEFAUT = 10;
 const int RAYON_PAR_DEFAUT = 10;
 
+
+// ---------------------------- Tests classe Rectangle ----------------------------
 bool Tests::test_peut_creer_rectangle_avec_valeurs_de_base() {
 	Rectangle rect;
 	
@@ -97,7 +94,7 @@ bool Tests::test_rectangle_peut_translater() {
 	       rect.getAncrage().y == ANCRAGE_PAR_DEFAUT_Y + deltaY;
 }
 
-	
+// ---------------------------- Tests classe Carre ----------------------------
 bool Tests::test_peut_creer_carre_avec_valeurs_de_base() {
 	Carre carre;
 	
@@ -163,6 +160,7 @@ bool Tests::test_carre_peut_translater() {
 	       carre.getAncrage().y == ANCRAGE_PAR_DEFAUT_Y + deltaY;
 }
 
+// ---------------------------- Tests classe Cercle ----------------------------
 bool Tests::test_peut_creer_cercle_avec_valeurs_de_base() {
 	Cercle cercle;
 	
@@ -231,6 +229,169 @@ bool Tests::test_cercle_peut_translater() {
 }
 
 
+// ---------------------------- Tests classe Rectangle ----------------------------
+bool Tests::test_vecteur_retourne_taille_zero_quand_vide() {
+	Vecteur<Forme> v;
+	
+	return v.getTaille() == 0;
+}
+
+bool Tests::test_vecteur_retourne_taille_1_quand_1_element() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	
+	return v.getTaille() == 1;
+}
+
+bool Tests::test_vecteur_retourne_taille_X_quand_X_element() {
+	Vecteur<Forme> v;
+	for(int i = 0; i < 10; i++) {
+		Cercle* c = new Cercle();
+		v.ajouter(c);
+	}
+	
+	return v.getTaille() == 10;
+}
+
+bool Tests::test_capacite_initial_est_unitaire() {
+	Vecteur<Forme> v;
+	
+	return v.getCapacite() == 1;
+}
+
+bool Tests::test_capacite_double_lorsque_trop_plein() {
+	Vecteur<Forme> v;
+	for(int i = 0; i < 2; i++) {
+		Cercle* c = new Cercle();
+		v.ajouter(c);
+	}
+	
+	return v.getCapacite() == 2;
+}
+
+bool Tests::test_lorsque_vecteur_se_vide_taille_devient_zero() {
+	Vecteur<Forme> v;
+	for(int i = 0; i < 10; i++) {
+		Cercle* c = new Cercle();
+		v.ajouter(c);
+	}
+	
+	v.vider();
+	
+	return v.getTaille() == 0;
+}
+	
+bool Tests::test_estVide_retourne_vrai_quand_le_vecteur_est_vide() {
+	Vecteur<Forme> v;
+	for(int i = 0; i < 10; i++) {
+		Cercle* c = new Cercle();
+		v.ajouter(c);
+	}
+	
+	v.vider();
+	
+	return v.estVide();
+}
+
+bool Tests::test_estVide_retourne_faux_quand_le_vecteur_nest_pas_vide() {
+	Vecteur<Forme> v;
+	for(int i = 0; i < 10; i++) {
+		Cercle* c = new Cercle();
+		v.ajouter(c);
+	}
+	
+	return !v.estVide();
+}
+
+bool Tests::test_ajouter_au_vecteur_retourne_vrai_lorsque_la_forme_est_ajouter() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	
+	bool resultat = v.ajouter(c);
+	
+	return resultat && v.getTaille() == 1;
+}
+
+bool Tests::test_retirer_au_vecteur_retourne_pointeur_vers_objet_selon_index_et_retire_objet() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = 0;
+	
+	Forme* f = v.retirer(index);
+	return f == c && v.getTaille() == 0;
+}
+
+bool Tests::test_retirer_avec_index_plus_petit_que_zero_retourne_nullptr_et_garde_objet() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = -1;
+	
+	Forme* f = v.retirer(index);
+	
+	return f == nullptr && v.getTaille() == 1;
+}
+
+bool Tests::test_retirer_avec_index_plus_grand_que_capacite_retourne_nullptr_et_garde_objet() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = 50;
+	
+	Forme* f = v.retirer(index);
+	
+	return f == nullptr && v.getTaille() == 1;
+}
+
+bool Tests::test_obtenir_au_vecteur_retourne_pointeur_vers_objet_selon_index() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = 0;
+	
+	Forme* f = v.obtenir(index);
+	
+	return f == c && v.getTaille() == 1;
+}
+
+bool Tests::test_obtenir_avec_index_plus_petit_que_zero_retourne_nullptr() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = -1;
+	
+	Forme* f = v.obtenir(index);
+	
+	return f == nullptr && v.getTaille() == 1;
+}
+
+bool Tests::test_obtenir_avec_index_plus_grand_que_capacite_retourne_nullptr() {
+	Vecteur<Forme> v;
+	Cercle* c = new Cercle();
+	v.ajouter(c);
+	int index = 50;
+	
+	Forme* f = v.obtenir(index);
+	
+	return f == nullptr && v.getTaille() == 1;
+}
+
+bool Tests::test_afficher_affiche_le_contenu_de_chaque_forme_du_vecteur() {
+	Vecteur<Forme> v;
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	v.ajouter(r);
+	v.ajouter(c);
+	ostringstream oss;
+	string expected = "Rectangle(x=0, y=0, l=1, h=1, aire=1)\nCarre (x=0, y=0, c=1, aire=1)\n";
+					 	
+	v.afficher(oss);
+	
+	return oss.str() == expected;
+}
+
 void Tests::tests_unitaires_formes()
 {
 	//Tests Rectangle
@@ -275,6 +436,25 @@ void Tests::tests_unitaires_formes()
 void Tests::tests_unitaires_vecteur()
 {
 	// Tests de la classe Vecteur
+	if (test_vecteur_retourne_taille_zero_quand_vide() &&
+		test_vecteur_retourne_taille_1_quand_1_element() &&
+		test_vecteur_retourne_taille_X_quand_X_element() &&
+		test_capacite_initial_est_unitaire() &&
+		test_capacite_double_lorsque_trop_plein() &&
+		test_lorsque_vecteur_se_vide_taille_devient_zero() &&
+		test_estVide_retourne_vrai_quand_le_vecteur_est_vide() &&
+		test_estVide_retourne_faux_quand_le_vecteur_nest_pas_vide() &&
+		test_ajouter_au_vecteur_retourne_vrai_lorsque_la_forme_est_ajouter() &&
+		test_retirer_au_vecteur_retourne_pointeur_vers_objet_selon_index_et_retire_objet() &&
+		test_retirer_avec_index_plus_petit_que_zero_retourne_nullptr_et_garde_objet() &&
+		test_retirer_avec_index_plus_grand_que_capacite_retourne_nullptr_et_garde_objet() &&
+		test_obtenir_au_vecteur_retourne_pointeur_vers_objet_selon_index() &&
+		test_obtenir_avec_index_plus_petit_que_zero_retourne_nullptr() &&
+		test_obtenir_avec_index_plus_grand_que_capacite_retourne_nullptr() &&
+		test_afficher_affiche_le_contenu_de_chaque_forme_du_vecteur())
+		cout << "Tests sur les vecteurs réussies" << endl;
+	else
+		cout << "Tests sur les vecteurs échouées" << endl;
 }
 
 void Tests::tests_unitaires_couche()

@@ -7,7 +7,6 @@
  * Ce fichier fait partie de la distribution de Graphicus.
 ********/
 #include "tests.h"
-#include "rectangle.h"
 
 using namespace std;
 
