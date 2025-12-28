@@ -71,6 +71,18 @@ public:
 	bool test_obtenir_avec_index_plus_grand_que_capacite_retourne_nullptr();
 	bool test_afficher_affiche_le_contenu_de_chaque_forme_du_vecteur();
 	
+	//Tests pour la classe couche
+	bool test_couche_ajoute_forme_si_active_retourne_vrai();
+	bool test_couche_ajoute_forme_si_inactive_retourne_faux();
+	bool test_couche_retire_forme_si_active_retourne_forme();
+	bool test_couche_retire_forme_si_inactive_retourne_nullptr();
+	bool test_couche_obtenir_forme_retourne_forme();
+	bool test_couche_donne_aire_totale_si_active_retourne_aire();
+	bool test_couche_donne_aire_toatale_si_initialise_retourne_zero();
+	bool test_couche_peut_translater_formes_si_active();
+	bool test_couche_ne_peut_pas_translater_formes_si_inactive();
+	bool test_couche_peut_se_reinitialiser_retourne_un_boolean();
+	bool test_couche_peut_afficher_son_contenue();
 	
 	void tests_unitaires_formes();
 	void tests_unitaires_vecteur();

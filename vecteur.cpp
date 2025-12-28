@@ -66,6 +66,12 @@ void Vecteur<T>::vider() {
 			list[i] = nullptr;
 		}
 	}
+	delete[] list;
+	list = nullptr;
+	
+	capacite = 1;
+	list = new T*[capacite];
+	list[0] = nullptr;
 }
 
 template <typename T>

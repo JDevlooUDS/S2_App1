@@ -12,9 +12,32 @@
 #ifndef COUCHE_H
 #define COUCHE_H
 
+#include "vecteur.h"
+
+enum Etat {
+	INITIALISE,
+	ACTIVE,
+	INACTIVE
+};
+
 class Couche
 {
-	// Classe à compléter
+public:
+	Couche();
+	~Couche();
+	bool ajouter(Forme* pforme);
+	Forme* retirer(int index);
+	Forme* obtenir(int index);
+	double aire();
+	bool translater(int deltaX, int deltaY);
+	bool reinitialiser();
+	bool changerEtat(Etat etat);
+	bool estActive();
+	void afficher(ostream &s);
+
+private:
+	Vecteur<Forme> vecteur;
+	Etat etat;
 };
 
 #endif

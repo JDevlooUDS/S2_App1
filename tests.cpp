@@ -276,9 +276,9 @@ bool Tests::test_lorsque_vecteur_se_vide_taille_devient_zero() {
 		Cercle* c = new Cercle();
 		v.ajouter(c);
 	}
-	
+
 	v.vider();
-	
+
 	return v.getTaille() == 0;
 }
 	
@@ -392,6 +392,148 @@ bool Tests::test_afficher_affiche_le_contenu_de_chaque_forme_du_vecteur() {
 	return oss.str() == expected;
 }
 
+// ---------------------------- Tests classe Couche ----------------------------
+bool Tests::test_couche_ajoute_forme_si_active_retourne_vrai() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	Rectangle* r = new Rectangle();
+	
+	bool resultat = couche.ajouter(r);
+	
+	return resultat;
+}
+
+bool Tests::test_couche_ajoute_forme_si_inactive_retourne_faux() {
+	Couche couche;
+	couche.changerEtat(INACTIVE);
+	Rectangle* r = new Rectangle();
+	
+	bool resultat = couche.ajouter(r);
+	
+	return !resultat;
+}
+
+bool Tests::test_couche_retire_forme_si_active_retourne_forme() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	Rectangle* r = new Rectangle();
+	couche.ajouter(r);
+	
+	Forme* pforme = couche.retirer(0);
+	
+	return pforme == r;
+}
+
+bool Tests::test_couche_retire_forme_si_inactive_retourne_nullptr() {
+	Couche couche;
+	couche.changerEtat(INACTIVE);
+	Rectangle* r = new Rectangle();
+	couche.ajouter(r);
+	
+	Forme* pforme = couche.retirer(0);
+	
+	return pforme == nullptr;
+}
+
+bool Tests::test_couche_obtenir_forme_retourne_forme() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	Rectangle* r = new Rectangle();
+	couche.ajouter(r);
+	
+	Forme* pforme = couche.obtenir(0);
+	
+	return pforme == r;
+}
+
+bool Tests::test_couche_donne_aire_totale_si_active_retourne_aire() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	double expected = 50;
+	for(int i = 0; i < 5; i++) {
+		Rectangle* r = new Rectangle(0,0,2,5);
+		couche.ajouter(r);
+	}
+	
+	double aire = couche.aire();
+	
+	return aire == expected;
+}
+
+bool Tests::test_couche_donne_aire_toatale_si_initialise_retourne_zero() {
+	Couche couche;
+	
+	double aire = couche.aire();
+	
+	return aire == 0;
+}
+
+bool Tests::test_couche_peut_translater_formes_si_active() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	int deltaX = 2;
+	int deltaY = 3;
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	couche.ajouter(r);
+	couche.ajouter(c);
+	
+	bool resultat = couche.translater(deltaX, deltaY);
+	
+	return resultat &&
+		   r->getAncrage().x == deltaX &&
+		   r->getAncrage().y == deltaY &&
+		   c->getAncrage().x == deltaX &&
+		   c->getAncrage().y == deltaY;
+}
+
+bool Tests::test_couche_ne_peut_pas_translater_formes_si_inactive() {
+	Couche couche;
+	couche.changerEtat(INACTIVE);
+	int deltaX = 2;
+	int deltaY = 3;
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	couche.ajouter(r);
+	couche.ajouter(c);
+	
+	bool resultat = couche.translater(deltaX, deltaY);
+	
+	return !resultat &&
+		   r->getAncrage().x == 0 &&
+		   r->getAncrage().y == 0 &&
+		   c->getAncrage().x == 0 &&
+		   c->getAncrage().y == 0;
+}
+
+bool Tests::test_couche_peut_se_reinitialiser_retourne_un_boolean() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	for(int i = 0; i < 5; i++) {
+		Rectangle* r = new Rectangle();
+		couche.ajouter(r);
+	}
+	
+	bool resultat = couche.reinitialiser();
+	
+	return resultat;
+}
+
+bool Tests::test_couche_peut_afficher_son_contenue() {
+	Couche couche;
+	couche.changerEtat(ACTIVE);
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	couche.ajouter(r);
+	couche.ajouter(c);
+	ostringstream oss;
+	string expected = "État: active\nRectangle(x=0, y=0, l=1, h=1, aire=1)\nCarre (x=0, y=0, c=1, aire=1)\n";
+	
+	couche.afficher(oss);
+	
+	return oss.str() == expected;
+}
+
 void Tests::tests_unitaires_formes()
 {
 	//Tests Rectangle
@@ -459,7 +601,20 @@ void Tests::tests_unitaires_vecteur()
 
 void Tests::tests_unitaires_couche()
 {
-	// Tests de la classe Couche
+	if (test_couche_ajoute_forme_si_active_retourne_vrai() &&
+		test_couche_ajoute_forme_si_inactive_retourne_faux() &&
+		test_couche_retire_forme_si_active_retourne_forme() &&
+		test_couche_retire_forme_si_inactive_retourne_nullptr() && 
+		test_couche_obtenir_forme_retourne_forme() &&
+		test_couche_donne_aire_totale_si_active_retourne_aire() &&
+		test_couche_donne_aire_toatale_si_initialise_retourne_zero() &&
+		test_couche_peut_translater_formes_si_active() &&
+		test_couche_ne_peut_pas_translater_formes_si_inactive() &&
+		test_couche_peut_se_reinitialiser_retourne_un_boolean() &&
+		test_couche_peut_afficher_son_contenue())
+		cout << "Tests sur les couches réussies" << endl;
+	else 
+		cout << "Tests sur les couches échouées" << endl;
 }
 
 void Tests::tests_unitaires_canevas()

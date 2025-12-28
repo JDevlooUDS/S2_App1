@@ -1,3 +1,6 @@
+#ifndef VECTEUR_H
+#define VECTEUR_H
+
 #include "forme.h"
 #include <type_traits>
 
@@ -23,3 +26,5 @@ private:
 	T** list = nullptr;
 	
 };
+
+#endif
