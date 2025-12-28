@@ -73,7 +73,8 @@ void Couche::afficher(ostream &s) {
 			break;
 	}
 	s << "État: " << etatActuel << endl;
-	vecteur.afficher(s);
+	if (vecteur.estVide()) s << "Couche: vide" << endl;
+	else vecteur.afficher(s);
 }
 
 bool Couche::estActive() {
