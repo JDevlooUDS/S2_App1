@@ -84,6 +84,9 @@ public:
 	bool test_couche_peut_se_reinitialiser_retourne_un_boolean();
 	bool test_couche_peut_afficher_son_contenue();
 	
+	//Tests pour la classe canevas
+	bool test_canevas_peut_reinitialiser_une_couche_retourne_vrai();
+	
 	void tests_unitaires_formes();
 	void tests_unitaires_vecteur();
 	void tests_unitaires_couche();

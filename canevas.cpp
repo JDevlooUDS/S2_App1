@@ -20,8 +20,12 @@ Canevas::~Canevas()
 }
 
 bool Canevas::reinitialiser()
-{
-	return true;
+{	
+	bool resultat = true;
+	for(int i = 0; i < MAX_COUCHES; i++) {
+		if (!couches[i].reinitialiser()) resultat = false;
+	}
+	return resultat;
 }
 
 bool Canevas::reinitialiserCouche(int index)

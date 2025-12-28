@@ -534,6 +534,16 @@ bool Tests::test_couche_peut_afficher_son_contenue() {
 	return oss.str() == expected;
 }
 
+// ---------------------------- Tests classe Canevas ----------------------------
+bool Tests::test_canevas_peut_reinitialiser_une_couche_retourne_vrai() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	
+	bool resultat = canevas.reinitialiserCouche(0);
+	return resultat;
+	
+}
+
 void Tests::tests_unitaires_formes()
 {
 	//Tests Rectangle
@@ -620,6 +630,10 @@ void Tests::tests_unitaires_couche()
 void Tests::tests_unitaires_canevas()
 {
 	// Tests de la classe Canevas
+	if (test_canevas_peut_reinitialiser_une_couche_retourne_vrai())
+		cout << "Tests sur les canevas réussies" << endl;
+	else
+		cout << "Tests sur les canevas échouées" << endl;
 }
 
 void Tests::tests_unitaires()
