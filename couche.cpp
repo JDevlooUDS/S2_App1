@@ -50,6 +50,7 @@ bool Couche::translater(int deltaX, int deltaY) {
 
 bool Couche::reinitialiser() {
 	vecteur.vider();
+	etat = INITIALISE;
 	return vecteur.estVide();
 }
 

@@ -25,6 +25,7 @@ bool Canevas::reinitialiser()
 	for(int i = 0; i < MAX_COUCHES; i++) {
 		if (!couches[i].reinitialiser()) resultat = false;
 	}
+	activerCouche(0);
 	return resultat;
 }
 

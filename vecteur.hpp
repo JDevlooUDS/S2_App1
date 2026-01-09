@@ -1,4 +1,32 @@
-#include "vecteur.h"
+#ifndef VECTEUR_H
+#define VECTEUR_H
+
+#include "forme.h"
+#include <type_traits>
+
+template < typename T >
+class Vecteur {
+
+public:
+	Vecteur();
+	~Vecteur();
+	int getCapacite();
+	int getTaille();
+	void vider();
+	bool estVide();
+	bool ajouter(T *obj);
+	T* retirer(int index);
+	T* obtenir(int index);
+	void afficher(ostream &s);
+	
+private:
+	void aggrandir();
+
+	int capacite = 1;
+	int taille = 0;
+	T** list = nullptr;
+	
+};
 
 template <typename T>
 Vecteur<T>::Vecteur() {
@@ -25,10 +53,6 @@ int Vecteur<T>::getCapacite() {
 
 template <typename T>
 int Vecteur<T>::getTaille() {
-	int taille = 0;
-	for(int i = 0; i < capacite; i++) {
-		if (list[i] != nullptr) taille++;
-	}
 	return taille;
 }
 
@@ -38,6 +62,7 @@ bool Vecteur<T>::ajouter(T* obj) {
 		if (list[i] != nullptr && i == (capacite - 1)) aggrandir();
 		else if (list[i] == nullptr) {
 			list[i] = obj;
+			taille++;
 			return true;
 		}
 	}
@@ -49,6 +74,12 @@ T* Vecteur<T>::retirer(int index) {
 	if (index < 0 || index >= capacite) return nullptr;
 	T* obj = list[index];
 	list[index] = nullptr;
+	if (taille > index + 1) {
+		for (int i = index; i < capacite - 1; i++) {
+			list[i] = list[i + 1];
+		}
+	}
+	taille--;
 	return obj;
 }
 
@@ -104,5 +135,4 @@ void Vecteur<T>::aggrandir() {
 	
 }
 
-
-template class Vecteur<Forme>;
+#endif
