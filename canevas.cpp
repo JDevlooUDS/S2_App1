@@ -38,6 +38,10 @@ bool Canevas::reinitialiserCouche(int index)
 
 bool Canevas::activerCouche(int index)
 {
+	if (index < 0 || index > MAX_COUCHES - 1) return false;
+	for (int i = 0; i < MAX_COUCHES; i++) {
+		if (couches[i].estActive()) desactiverCouche(i);
+	}
 	return couches[index].changerEtat(ACTIVE);
 }
 
@@ -101,4 +105,11 @@ void Canevas::afficher(ostream & s)
 		s << "----- Couche " << i << " -----" << endl;
 		couches[i].afficher(s);
 	}
+}
+
+bool Canevas::coucheActiveEstVide() {
+	for(int i = 0; i < MAX_COUCHES; i++) {
+		if (couches[i].estActive()) return couches[i].estVide(); 
+	}
+	return false;
 }

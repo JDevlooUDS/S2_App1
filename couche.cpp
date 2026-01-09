@@ -80,3 +80,7 @@ void Couche::afficher(ostream &s) {
 bool Couche::estActive() {
 	return etat == ACTIVE;
 }
+
+bool Couche::estVide() {
+	return vecteur.estVide();
+}

@@ -538,11 +538,112 @@ bool Tests::test_couche_peut_afficher_son_contenue() {
 bool Tests::test_canevas_peut_reinitialiser_une_couche_retourne_vrai() {
 	Canevas canevas;
 	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
 	
-	bool resultat = canevas.reinitialiserCouche(0);
+	bool resultat = canevas.reinitialiserCouche(0); // la couche 0 est active par défaut
+	
+	return resultat && canevas.coucheActiveEstVide();
+}
+
+bool Tests::test_canevas_peut_se_reinitialiser_retourne_vrai() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
+	
+	bool resultat = canevas.reinitialiser();
+	
+	return resultat && canevas.coucheActiveEstVide();
+}
+
+bool Tests::test_canevas_peut_changer_de_couche_active_retourne_vrai_si_reussi() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
+	
+	bool resultat  = canevas.activerCouche(1);
+	
 	return resultat;
+}
+
+bool Tests::test_canevas_peut_changer_de_couche_active_retourne_faux_si_index_invalide() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
+	
+	bool resultat  = canevas.activerCouche(-1);
+	
+	return !resultat;
+}
+
+bool Tests::test_canevas_peut_ajouter_une_forme_retourne_vrai() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	
+	bool resultat = canevas.ajouterForme(r);
+	
+	return resultat;
+}
+
+bool Tests::test_canevas_peut_retirer_une_forme_retourne_vrai() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
+	
+	bool resultat = canevas.retirerForme(0);
+	
+	return resultat;
+}
+
+bool Tests::test_canevas_peut_retirer_une_forme_retourne_faux_si_index_invalide() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	canevas.ajouterForme(r);
+	
+	bool resultat = canevas.retirerForme(-1);
+	
+	return !resultat;
+}
+
+bool Tests::test_canevas_peut_retirer_une_forme_retourne_faux_si_pas_de_forme() {
+	Canevas canevas;
+	
+	bool resultat = canevas.retirerForme(0);
+	
+	return !resultat;
+}
+
+bool Tests::test_canevas_peut_retourner_laire_total_du_canevas() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	canevas.ajouterForme(r);
+	canevas.activerCouche(1);
+	canevas.ajouterForme(c);
+	double expected = 2.0;
+	
+	double resultat = canevas.aire();
+	
+	return resultat == expected;
+}
+
+bool Tests::test_canevas_peut_afficher_son_contenu() {
+	Canevas canevas;
+	Rectangle* r = new Rectangle();
+	Carre* c = new Carre();
+	canevas.ajouterForme(r);
+	canevas.activerCouche(1);
+	canevas.ajouterForme(c);
+	ostringstream oss;
+	stringstream ss;
+	ss << "----- Couche 0 -----\n" << "État: inactive\n" << "Rectangle(x=0, y=0, l=1, h=1, aire=1)\n" << "----- Couche 1 -----\n" << "État: active\n" << "Carre (x=0, y=0, c=1, aire=1)\n" << "----- Couche 2 -----\n" << "État: initialisée\n" << "Couche: vide\n" << "----- Couche 3 -----\n" << "État: initialisée\n" << "Couche: vide\n" << "----- Couche 4 -----\n" << "État: initialisée\n" << "Couche: vide\n";
+	
+	canevas.afficher(oss);
+	
+	string expected = ss.str();
+	return  expected == oss.str();
 	
 }
+
 
 void Tests::tests_unitaires_formes()
 {
@@ -630,7 +731,16 @@ void Tests::tests_unitaires_couche()
 void Tests::tests_unitaires_canevas()
 {
 	// Tests de la classe Canevas
-	if (test_canevas_peut_reinitialiser_une_couche_retourne_vrai())
+	if (test_canevas_peut_reinitialiser_une_couche_retourne_vrai() &&
+	    test_canevas_peut_se_reinitialiser_retourne_vrai() &&
+	    test_canevas_peut_changer_de_couche_active_retourne_vrai_si_reussi() &&
+	    test_canevas_peut_changer_de_couche_active_retourne_faux_si_index_invalide() &&
+	    test_canevas_peut_ajouter_une_forme_retourne_vrai() &&
+    	test_canevas_peut_retirer_une_forme_retourne_vrai() &&
+		test_canevas_peut_retirer_une_forme_retourne_faux_si_index_invalide() &&
+		test_canevas_peut_retirer_une_forme_retourne_faux_si_pas_de_forme() &&
+		test_canevas_peut_retourner_laire_total_du_canevas() && 
+		test_canevas_peut_afficher_son_contenu())
 		cout << "Tests sur les canevas réussies" << endl;
 	else
 		cout << "Tests sur les canevas échouées" << endl;

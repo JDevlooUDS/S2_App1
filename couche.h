@@ -34,6 +34,7 @@ public:
 	bool changerEtat(Etat etat);
 	bool estActive();
 	void afficher(ostream &s);
+	bool estVide();
 
 private:
 	Vecteur<Forme> vecteur;

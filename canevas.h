@@ -33,6 +33,7 @@ public:
 	double aire();
 	bool translater(int deltaX, int deltaY);
 	void afficher(ostream & s);
+	bool coucheActiveEstVide();
 private:
 	Couche couches[MAX_COUCHES];
 };

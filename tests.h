@@ -86,6 +86,15 @@ public:
 	
 	//Tests pour la classe canevas
 	bool test_canevas_peut_reinitialiser_une_couche_retourne_vrai();
+	bool test_canevas_peut_se_reinitialiser_retourne_vrai();
+	bool test_canevas_peut_changer_de_couche_active_retourne_vrai_si_reussi();
+	bool test_canevas_peut_changer_de_couche_active_retourne_faux_si_index_invalide();
+	bool test_canevas_peut_ajouter_une_forme_retourne_vrai();
+	bool test_canevas_peut_retirer_une_forme_retourne_vrai();
+	bool test_canevas_peut_retirer_une_forme_retourne_faux_si_index_invalide();
+	bool test_canevas_peut_retirer_une_forme_retourne_faux_si_pas_de_forme();
+	bool test_canevas_peut_retourner_laire_total_du_canevas();
+	bool test_canevas_peut_afficher_son_contenu();
 	
 	void tests_unitaires_formes();
 	void tests_unitaires_vecteur();
