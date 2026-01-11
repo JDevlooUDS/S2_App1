@@ -1,16 +1,21 @@
 #include "carre.h"
 
-Carre::Carre(int x, int y, int c):Rectangle(x,y,c,c) {}
+Carre::Carre(int x, int y, int c): Forme(x,y) {
+	cote = c;
+}
 
 void Carre::setCote(int c) {
-	largeur = c;
-	hauteur = c;
+	cote = c;
 }
 
 int Carre::getCote() {
-	return largeur;
+	return cote;
 }
 
 void Carre::afficher(ostream &s) {
-	s << "Carre (x=" << ancrage.x << ", y=" << ancrage.y << ", c=" << largeur << ", aire=" << aire() << ")" << endl;
+	s << "Carre (x=" << ancrage.x << ", y=" << ancrage.y << ", c=" << cote << ", aire=" << aire() << ")" << endl;
+}
+
+double Carre::aire() {
+	return cote * cote;
 }

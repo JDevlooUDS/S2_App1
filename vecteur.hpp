@@ -101,6 +101,7 @@ void Vecteur<T>::vider() {
 	list = nullptr;
 	
 	capacite = 1;
+	taille = 0;
 	list = new T*[capacite];
 	list[0] = nullptr;
 }

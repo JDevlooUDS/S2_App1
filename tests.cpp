@@ -229,10 +229,9 @@ bool Tests::test_cercle_peut_translater() {
 }
 
 
-// ---------------------------- Tests classe Rectangle ----------------------------
+// ---------------------------- Tests classe Vecteur ----------------------------
 bool Tests::test_vecteur_retourne_taille_zero_quand_vide() {
 	Vecteur<Forme> v;
-	
 	return v.getTaille() == 0;
 }
 
@@ -250,13 +249,13 @@ bool Tests::test_vecteur_retourne_taille_X_quand_X_element() {
 		Cercle* c = new Cercle();
 		v.ajouter(c);
 	}
-	
+		
 	return v.getTaille() == 10;
 }
 
 bool Tests::test_capacite_initial_est_unitaire() {
 	Vecteur<Forme> v;
-	
+
 	return v.getCapacite() == 1;
 }
 
@@ -278,7 +277,7 @@ bool Tests::test_lorsque_vecteur_se_vide_taille_devient_zero() {
 	}
 
 	v.vider();
-
+	
 	return v.getTaille() == 0;
 }
 	
