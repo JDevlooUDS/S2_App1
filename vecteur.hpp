@@ -77,6 +77,7 @@ T* Vecteur<T>::retirer(int index) {
 	if (taille > index + 1) {
 		for (int i = index; i < capacite - 1; i++) {
 			list[i] = list[i + 1];
+			list[i + 1] = nullptr;
 		}
 	}
 	taille--;

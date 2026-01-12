@@ -41,14 +41,17 @@ bool Canevas::activerCouche(int index)
 {
 	if (index < 0 || index > MAX_COUCHES - 1) return false;
 	for (int i = 0; i < MAX_COUCHES; i++) {
-		if (couches[i].estActive()) desactiverCouche(i);
+		if (couches[i].estActive()) couches[i].changerEtat(INACTIVE);
 	}
 	return couches[index].changerEtat(ACTIVE);
 }
 
 bool Canevas::desactiverCouche(int index)
 {
-	return couches[index].changerEtat(INACTIVE);
+	if (index < 0 || index >= MAX_COUCHES) return false;
+	bool resultat = couches[index].changerEtat(INACTIVE);
+	if (resultat) couches[0].changerEtat(ACTIVE);
+	return resultat;
 }
 
 bool Canevas::ajouterForme(Forme *p_forme)

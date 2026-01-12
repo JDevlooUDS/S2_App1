@@ -765,12 +765,105 @@ void Tests::tests_application_cas_01()
 {
 	cout << "TESTS APPLICATION (CAS 01)" << endl;
 	// Il faut ajouter les opérations réalisant ce scénario de test.
+	
+	Canevas canevas;
+	
+	cout << "Ajout des formes à la couche 0" << endl << endl;
+	Rectangle* rectangle1 = new Rectangle(0,0,2,50);
+	Rectangle* rectangle2 = new Rectangle(0,0,20,2);
+	canevas.ajouterForme(rectangle1);
+	canevas.ajouterForme(rectangle2);
+	
+	cout << "Activation de la couche 1" << endl << endl;
+	canevas.activerCouche(1);
+	
+	canevas.afficher(cout);
+	
+	cout << "Ajout d'un cercle sur la couche 1" << endl << endl;
+	Cercle* cercle1 = new Cercle(10,1,2);
+	canevas.ajouterForme(cercle1);
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
+	
+	cout << "Activation de la couche 2" << endl << endl;
+	canevas.activerCouche(2);
+	
+	cout << "Ajout d'un cercle à la couche 2" << endl << endl;
+	Cercle* cercle2 = new Cercle(-1,-3,4);
+	canevas.ajouterForme(cercle2);
+	
+	cout << "Activation de la couche 0" << endl << endl;
+	canevas.activerCouche(0);
+	
+	cout << "Suppression de la première forme de la couche 0" << endl << endl;
+	canevas.retirerForme(0);
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
+	
+	cout << "Activation de la couche 2" << endl << endl;
+	canevas.activerCouche(2);
+	
+	cout << "Translation de la couche 2" << endl << endl;
+	canevas.translater(11,4);
+	
+	canevas.afficher(cout);
+	
+	cout << "Réinitialisation du Canevas" << endl << endl;
+	canevas.reinitialiser();
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
 }
 
 void Tests::tests_application_cas_02()
 {
 	cout << "TESTS APPLICATION (CAS 02)" << endl;
 	// Il faut ajouter les opérations realisant ce scénario de test.
+	Canevas canevas;
+	
+	cout << "Ajout de formes à la couche 0" << endl << endl;
+	Rectangle* rectangle1 = new Rectangle(0,0,42,24);
+	Carre* carre1 = new Carre();
+	Cercle* cercle1 = new Cercle(0,0,3);
+	
+	canevas.ajouterForme(rectangle1);
+	canevas.ajouterForme(carre1);
+	canevas.ajouterForme(cercle1);
+	
+	cout << "Activation de la couche 1" << endl << endl;
+	canevas.activerCouche(1);
+	
+	cout << "Ajout de formes dans la couche 1" << endl << endl;
+	Cercle* cercle2 = new Cercle(3,4,5);
+	Carre* carre2 = new Carre(4,4,4);
+	
+	canevas.ajouterForme(cercle2);
+	canevas.ajouterForme(carre2);
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
+	
+	cout << "Activation de la couche 0" << endl << endl;
+	canevas.activerCouche(0);
+	
+	cout << "Translation de la couche 0" << endl << endl;
+	canevas.translater(6,7);
+
+	canevas.afficher(cout);
+	
+	cout << "Réinitialisation de la couche 1" << endl << endl;
+	canevas.reinitialiserCouche(1);
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
+	
+	cout << "Réinitialisation du canevas" << endl << endl;
+	canevas.reinitialiser();
+	
+	canevas.afficher(cout);
+	cout << "L'aire du canevas est: " << canevas.aire() << endl << endl;
 }
 
 void Tests::test_validation() {
@@ -778,6 +871,7 @@ void Tests::test_validation() {
 	Canevas canevas;
 	
 	
+	cout << "----- Étape 1 -----" << endl << endl;
 	cout << "Activation de la couche 2" << endl << endl;
 	canevas.activerCouche(2);
 	
@@ -789,19 +883,24 @@ void Tests::test_validation() {
 	canevas.ajouterForme(carre1);
 	canevas.ajouterForme(rectangle1);
 	
+	cout << "----- Étape 2 -----" << endl << endl;
 	cout << "Activation de la couche 1" << endl << endl;
 	canevas.activerCouche(1);
 	
 	cout << "Ajout du rectangle à la couche 1" << endl << endl;
 	Rectangle* rectangle2 = new Rectangle(0,0,4,2);
 	canevas.ajouterForme(rectangle2);
+	
+	cout << "----- Étape 3 -----" << endl << endl;
 	canevas.afficher(cout);
 	cout << endl;
+	cout << "----- Étape 4 -----" << endl << endl;
 	cout << "Aire du canevas: " << canevas.aire() << endl;
 	cout << endl;
 	
 	cout << "----- Partie 2 -----" << endl << endl;
 	
+	cout << "----- Étape 5 -----" << endl << endl;
 	cout << "Activation de la couche 0" << endl << endl;
 	canevas.activerCouche(0);
 	
@@ -813,47 +912,59 @@ void Tests::test_validation() {
 	canevas.ajouterForme(carre2);
 	canevas.ajouterForme(cercle2);
 	
+	
+	cout << "----- Étape 6 -----" << endl << endl;
 	cout << "Activation de la couche 2" << endl << endl;
 	canevas.activerCouche(2);
 	
 	cout << "Translation de la couche 2  par x=4 et y=3" << endl << endl;
 	canevas.translater(4,3);
 	
+	cout << "----- Étape 7 -----" << endl << endl;
 	canevas.afficher(cout);
 	cout << endl;
+	cout << "----- Étape 8 -----" << endl << endl;
 	cout << "Aire du canevas: " << canevas.aire() << endl;
 	cout << endl;
 	
 	
 	cout << "----- Partie 3 -----" << endl << endl;
 	
+	cout << "----- Étape 9 -----" << endl << endl;
 	cout << "Activation de la couche 0" << endl << endl;
 	canevas.activerCouche(0);
 	
 	cout << "Suppression de la deuxième forme" << endl << endl;
 	canevas.retirerForme(1);
 	
+	cout << "----- Étape 10 -----" << endl << endl;
 	cout << "Suppression de la première forme" << endl <<endl;
 	canevas.retirerForme(0);
 	
+	cout << "----- Étape 11 -----" << endl << endl;
 	cout << "Activation de la couche 2" << endl << endl;
 	canevas.activerCouche(2);
 	
 	cout << "Réinitialisation de la couche 2" << endl << endl;
 	canevas.reinitialiserCouche(2);
 	
+	cout << "----- Étape 12 -----" << endl << endl;
 	canevas.afficher(cout);
 	cout << endl;
+	cout << "----- Étape 13 -----" << endl << endl;
 	cout << "Aire du canevas: " << canevas.aire() << endl;
 	cout << endl;
 	
 	cout << "----- Partie 4 -----" << endl << endl;
 	
+	cout << "----- Étape 14 -----" << endl << endl;
 	cout << "Réinitialisation du canevas" << endl << endl;
 	canevas.reinitialiser();
 	
+	cout << "----- Étape 15 -----" << endl << endl;
 	canevas.afficher(cout);
 	cout << endl;
+	cout << "----- Étape 16 -----" << endl << endl;
 	cout << "Aire du canevas: " << canevas.aire() << endl;
 	
 	
