@@ -14,11 +14,9 @@ int main()
 {
 	Tests tests;
 
-	//tests.tests_unitaires();
+	tests.tests_unitaires();
 	cout << endl;
-	tests.test_validation();
-	cout << endl;
-	//tests.tests_application();
+	tests.tests_application();
 	return 0;
 }
 

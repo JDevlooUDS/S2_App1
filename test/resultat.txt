@@ -1,0 +1,200 @@
+Tests sur les rectangles réussies
+Tests sur les carrées réussies
+Tests sur les cercles réussies
+Tests sur les vecteurs réussies
+Tests sur les couches réussies
+Tests sur les canevas réussies
+
+TESTS APPLICATION (CAS 01)
+Ajout des formes à la couche 0
+
+Activation de la couche 1
+
+----- Couche 0 -----
+État: inactive
+Rectangle(x=0, y=0, l=2, h=50, aire=100)
+Rectangle(x=0, y=0, l=20, h=2, aire=40)
+----- Couche 1 -----
+État: active
+Couche: vide
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+Ajout d'un cercle sur la couche 1
+
+----- Couche 0 -----
+État: inactive
+Rectangle(x=0, y=0, l=2, h=50, aire=100)
+Rectangle(x=0, y=0, l=20, h=2, aire=40)
+----- Couche 1 -----
+État: active
+Cercle (x=10, y=1, r=2, aire=12.5664)
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 152.566
+
+Activation de la couche 2
+
+Ajout d'un cercle à la couche 2
+
+Activation de la couche 0
+
+Suppression de la première forme de la couche 0
+
+----- Couche 0 -----
+État: active
+Rectangle(x=0, y=0, l=20, h=2, aire=40)
+----- Couche 1 -----
+État: inactive
+Cercle (x=10, y=1, r=2, aire=12.5664)
+----- Couche 2 -----
+État: inactive
+Cercle (x=-1, y=-3, r=4, aire=50.2655)
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 102.832
+
+Activation de la couche 2
+
+Translation de la couche 2
+
+----- Couche 0 -----
+État: inactive
+Rectangle(x=0, y=0, l=20, h=2, aire=40)
+----- Couche 1 -----
+État: inactive
+Cercle (x=10, y=1, r=2, aire=12.5664)
+----- Couche 2 -----
+État: active
+Cercle (x=10, y=1, r=4, aire=50.2655)
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+Réinitialisation du Canevas
+
+----- Couche 0 -----
+État: active
+Couche: vide
+----- Couche 1 -----
+État: initialisée
+Couche: vide
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 0
+
+TESTS APPLICATION (CAS 02)
+Ajout de formes à la couche 0
+
+Activation de la couche 1
+
+Ajout de formes dans la couche 1
+
+----- Couche 0 -----
+État: inactive
+Rectangle(x=0, y=0, l=42, h=24, aire=1008)
+Carre (x=0, y=0, c=1, aire=1)
+Cercle (x=0, y=0, r=3, aire=28.2743)
+----- Couche 1 -----
+État: active
+Cercle (x=3, y=4, r=5, aire=78.5398)
+Carre (x=4, y=4, c=4, aire=16)
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 1131.81
+
+Activation de la couche 0
+
+Translation de la couche 0
+
+----- Couche 0 -----
+État: active
+Rectangle(x=6, y=7, l=42, h=24, aire=1008)
+Carre (x=6, y=7, c=1, aire=1)
+Cercle (x=6, y=7, r=3, aire=28.2743)
+----- Couche 1 -----
+État: inactive
+Cercle (x=3, y=4, r=5, aire=78.5398)
+Carre (x=4, y=4, c=4, aire=16)
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+Réinitialisation de la couche 1
+
+----- Couche 0 -----
+État: active
+Rectangle(x=6, y=7, l=42, h=24, aire=1008)
+Carre (x=6, y=7, c=1, aire=1)
+Cercle (x=6, y=7, r=3, aire=28.2743)
+----- Couche 1 -----
+État: initialisée
+Couche: vide
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 1037.27
+
+Réinitialisation du canevas
+
+----- Couche 0 -----
+État: active
+Couche: vide
+----- Couche 1 -----
+État: initialisée
+Couche: vide
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+L'aire du canevas est: 0
+

@@ -2,7 +2,6 @@
 #define VECTEUR_H
 
 #include "forme.h"
-#include <type_traits>
 
 template < typename T >
 class Vecteur {
