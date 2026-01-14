@@ -198,3 +198,149 @@ Couche: vide
 Couche: vide
 L'aire du canevas est: 0
 
+
+----- Partie 1 -----
+
+----- Étape 1 -----
+
+Activation de la couche 2
+
+Ajout des formes dans la couche 2
+
+----- Étape 2 -----
+
+Activation de la couche 1
+
+Ajout du rectangle à la couche 1
+
+----- Étape 3 -----
+
+----- Couche 0 -----
+État: inactive
+Couche: vide
+----- Couche 1 -----
+État: active
+Rectangle(x=0, y=0, l=4, h=2, aire=8)
+----- Couche 2 -----
+État: inactive
+Cercle (x=0, y=0, r=5, aire=78.5398)
+Carre (x=4, y=1, c=6, aire=36)
+Rectangle(x=2, y=8, l=3, h=9, aire=27)
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+
+----- Étape 4 -----
+
+Aire du canevas: 149.54
+
+----- Partie 2 -----
+
+----- Étape 5 -----
+
+Activation de la couche 0
+
+Ajout des formes à la couche 0
+
+----- Étape 6 -----
+
+Activation de la couche 2
+
+Translation de la couche 2  par x=4 et y=3
+
+----- Étape 7 -----
+
+----- Couche 0 -----
+État: inactive
+Rectangle(x=0, y=0, l=1, h=1, aire=1)
+Carre (x=-1, y=-3, c=1, aire=1)
+Cercle (x=0, y=0, r=2, aire=12.5664)
+----- Couche 1 -----
+État: inactive
+Rectangle(x=0, y=0, l=4, h=2, aire=8)
+----- Couche 2 -----
+État: active
+Cercle (x=4, y=3, r=5, aire=78.5398)
+Carre (x=8, y=4, c=6, aire=36)
+Rectangle(x=6, y=11, l=3, h=9, aire=27)
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+
+----- Étape 8 -----
+
+Aire du canevas: 164.106
+
+----- Partie 3 -----
+
+----- Étape 9 -----
+
+Activation de la couche 0
+
+Suppression de la deuxième forme
+
+----- Étape 10 -----
+
+Suppression de la première forme
+
+----- Étape 11 -----
+
+Activation de la couche 2
+
+Réinitialisation de la couche 2
+
+----- Étape 12 -----
+
+----- Couche 0 -----
+État: inactive
+Cercle (x=0, y=0, r=2, aire=12.5664)
+----- Couche 1 -----
+État: inactive
+Rectangle(x=0, y=0, l=4, h=2, aire=8)
+----- Couche 2 -----
+État: active
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+
+----- Étape 13 -----
+
+Aire du canevas: 20.5664
+
+----- Partie 4 -----
+
+----- Étape 14 -----
+
+Réinitialisation du canevas
+
+----- Étape 15 -----
+
+----- Couche 0 -----
+État: active
+Couche: vide
+----- Couche 1 -----
+État: initialisée
+Couche: vide
+----- Couche 2 -----
+État: initialisée
+Couche: vide
+----- Couche 3 -----
+État: initialisée
+Couche: vide
+----- Couche 4 -----
+État: initialisée
+Couche: vide
+
+----- Étape 16 -----
+
+Aire du canevas: 0

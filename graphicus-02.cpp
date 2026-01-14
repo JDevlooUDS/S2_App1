@@ -17,6 +17,8 @@ int main()
 	tests.tests_unitaires();
 	cout << endl;
 	tests.tests_application();
+	cout << endl;
+	tests.test_validation();
 	return 0;
 }
 
